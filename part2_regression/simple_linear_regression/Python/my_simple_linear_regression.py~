@@ -1,0 +1,26 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+class Linear_regression:
+    def __init__(self):
+        print("LINEAR REGRESSION")
+
+    def loading_dataset(self,verbose=False,dataset_path=""):
+        dataset = pd.read_csv(dataset_path)
+        self.X = dataset.iloc[:,:-1].values
+        self.y = dataset.iloc[:,-1].values
+
+
+
+
+if __name__=="__main__":
+    linear = Linear_regression()
+    linear.loading_dataset(verbose=True,dataset_path="./Salary_Data.csv")
+
+
+
+
+#Simple linear regression, every x is multiply by a bias
