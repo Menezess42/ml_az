@@ -19,12 +19,32 @@ class Linear_regression:
             print(f"y_train:\n{self.y_train}")
             print(f"y_test:\n{self.y_test}")
         
-        def training_simple_linear(self):
-            self.regressor=LinearRegression()
-            self.regressor.fit(self.X_train,self.y_train)
+    def training_simple_linear(self):
+        self.regressor=LinearRegression()
+        self.regressor.fit(self.X_train,self.y_train)
 
-        def predicting_results(self,verbose=False):
-            self.y_pred = self.regressor.predict(self.X_test)
+    def predicting_results(self,verbose=False):
+        self.y_pred = self.regressor.predict(self.X_test)
+
+    def visualizing_training_results(self):
+        plt.scatter(self.X_train, self.y_train, color='red')
+        plt.plot(self.X_train, self.regressor.predict(self.X_train),color='blue')
+        plt.title('Salary vs Experience (Training Set)')
+        plt.xlabel('Years of Experience')
+        plt.ylabel('Salary')
+        plt.savefig("training_results.png")
+        plt.show()
+
+    def visualizing_test_sets(self):
+        plt.scatter(self.X_test, self.y_test, color='red')
+        plt.plot(self.X_train, self.regressor.predict(self.X_train),color='blue')
+        plt.title('Salary vs Experience (Test Set)')
+        plt.xlabel('Years of Experience')
+        plt.ylabel('Salary')
+        plt.savefig("test_results.png")
+        plt.show()
+            
+            
             
 
 
@@ -32,6 +52,9 @@ class Linear_regression:
 if __name__=="__main__":
     linear = Linear_regression()
     linear.loading_dataset(verbose=False,dataset_path="./Salary_Data.csv")
+    linear.training_simple_linear()
+    linear.visualizing_training_results()
+    linear.visualizing_test_sets()
 
 
 
